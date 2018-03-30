@@ -37,14 +37,14 @@ trait ManagesDeals
 
     public function updateDealStatus(int $id, array $data): Deal
     {
-        $response = $this->put("deals/{$id}/status", $data);
+        $response = $this->patch("deals/{$id}/status", $data);
 
         return new Deal($response);
     }
 
     public function updateDealAuthor(int $id, array $data): Deal
     {
-        $response = $this->put("deals/{$id}/author", $data);
+        $response = $this->patch("deals/{$id}/author", $data);
 
         return new Deal($response);
     }

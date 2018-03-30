@@ -8,9 +8,11 @@ class ValidationException extends Exception
 {
     public $errors = [];
 
-    public function __construct(array $errors)
+    public function __construct(string $message, array $errors)
     {
-        parent::__construct('The given data failed to pass validation.');
+        // $message = json_decode($message)->message;
+
+        parent::__construct($message);
 
         $this->errors = $errors;
     }

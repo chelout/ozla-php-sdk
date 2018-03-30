@@ -37,7 +37,7 @@ trait ManagesStatuses
 
     public function updateStatusPriority(int $id, array $data): Status
     {
-        $response = $this->put("statuses/{$id}/priority", $data);
+        $response = $this->patch("statuses/{$id}/priority", $data);
 
         return new Status($response);
     }
