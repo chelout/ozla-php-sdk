@@ -1,4 +1,4 @@
-# An SDK to easily work with the Ozal API
+# An SDK to easily work with the Ozla API
 
 
 
