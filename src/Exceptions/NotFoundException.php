@@ -1,6 +1,6 @@
 <?php
 
-namespace Ozla\PhpSdk\Exceptions;
+namespace Chelout\PhpSdk\Exceptions;
 
 use Exception;
 

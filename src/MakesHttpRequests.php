@@ -1,12 +1,12 @@
 <?php
 
-namespace Ozla\PhpSdk;
+namespace Chelout\PhpSdk;
 
 use Exception;
 use Psr\Http\Message\ResponseInterface;
-use Ozla\PhpSdk\Exceptions\NotFoundException;
-use Ozla\PhpSdk\Exceptions\ValidationException;
-use Ozla\PhpSdk\Exceptions\FailedActionException;
+use Chelout\PhpSdk\Exceptions\NotFoundException;
+use Chelout\PhpSdk\Exceptions\ValidationException;
+use Chelout\PhpSdk\Exceptions\FailedActionException;
 
 trait MakesHttpRequests
 {
@@ -66,7 +66,7 @@ trait MakesHttpRequests
             empty($payload) ? [] : ['form_params' => $payload]
         );
 
-        if (200 != $response->getStatusCode()) {
+        if (! in_array($response->getStatusCode(), [200, 201, 204])) {
             return $this->handleRequestError($response);
         }
 

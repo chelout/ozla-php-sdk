@@ -1,12 +1,22 @@
 <?php
 
-namespace Ozla\PhpSdk;
+namespace Chelout\PhpSdk;
 
 use GuzzleHttp\Client;
 
 class Ozla
 {
-    use MakesHttpRequests;
+    use MakesHttpRequests,
+        Actions\ManagesUsers,
+        Actions\ManagesCompanies,
+        Actions\ManagesContragents,
+        Actions\ManagesStatusColors,
+        Actions\ManagesStatusTypes,
+        Actions\ManagesStatuses,
+        Actions\ManagesDeals,
+        Actions\ManagesComments,
+        Actions\ManagesDealContragents,
+        Actions\ManagesDealMembers;
 
     /**
      * @var string
@@ -25,10 +35,13 @@ class Ozla
 
     public function __construct(string $domain, string $apiKey, Client $client = null)
     {
+        $this->domain = $domain;
+
         $this->apiKey = $apiKey;
 
         $this->client = $client ?: new Client([
-            'base_uri' => 'https://' . $this->domain . '.ozla.ru/api/v1/',
+            // 'base_uri' => 'https://' . $this->domain . '.ozla.ru/api/v1/',
+            'base_uri' => 'http://' . $this->domain . '.ozla.test/api/v1/',
             'http_errors' => false,
             'headers' => [
                 'Authorization' => 'Bearer ' . $this->apiKey,

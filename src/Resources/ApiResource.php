@@ -1,15 +1,24 @@
 <?php
 
-namespace Ozla\PhpSdk\Resources;
+namespace Chelout\PhpSdk\Resources;
+
+use DateTime;
 
 class ApiResource
 {
     /**
-     * Api Resource Type.
+     * Attributes that should be casted to DateTime.
      *
-     * @var string
+     * @var array
      */
-    protected $type;
+    protected $dates = [];
+
+    /**
+     * Attributes array.
+     *
+     * @var array
+     */
+    protected $attributes = [];
 
     /**
      * User id.
@@ -19,13 +28,6 @@ class ApiResource
     public $id;
 
     /**
-     * Api Resource.
-     *
-     * @var array
-     */
-    public $attributes = [];
-
-    /**
      * User API Resources.
      *
      * @var array
@@ -33,19 +35,13 @@ class ApiResource
     public $links;
 
     /**
-     * @var \Ozla\PhpSdk\Ozla
+     * @param array $response
      */
-    protected $ozla;
-
-    /**
-     * @param array             $attributes
-     * @param \Ozla\PhpSdk\Ozla $ozla
-     */
-    public function __construct(array $attributes, $ozla = null)
+    public function __construct(array $response)
     {
-        $this->attributes = $attributes;
-
-        $this->ozla = $ozla;
+        $this->id = $response['id'];
+        $this->attributes = $response['attributes'];
+        $this->links = $response['links'] ?? '';
 
         $this->fill();
     }
@@ -53,22 +49,16 @@ class ApiResource
     protected function fill()
     {
         foreach ($this->attributes as $key => $value) {
-            $key = $this->camelCase($key);
-
             $this->{$key} = $value;
         }
+
+        $this->castDates();
     }
 
-    protected function camelCase(string $key): string
+    protected function castDates()
     {
-        $parts = explode('_', $key);
-
-        foreach ($parts as $i => $part) {
-            if (0 !== $i) {
-                $parts[$i] = ucfirst($part);
-            }
+        foreach ($this->dates as $key) {
+            $this->{$key} = DateTime::createFromFormat(DateTime::ISO8601, $this->{$key});
         }
-
-        return str_replace(' ', '', implode(' ', $parts));
     }
 }
