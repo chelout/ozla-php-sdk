@@ -1,10 +1,10 @@
-# An SDK to easily work with the Oh Dear API
+# An SDK to easily work with the Ozal API
 
 
 
 ## Documentation
 
-
+[Example project](https://github.com/chelout/ozla-php-sdk-example)
 
 ## Security
 
