@@ -7,43 +7,43 @@ use Chelout\PhpSdk\Resources\ApiResourceCollection;
 
 trait ManagesStatuses
 {
-    public function statuses(): ApiResourceCollection
+    public function statuses(int $funnelId): ApiResourceCollection
     {
-        $response = $this->get('statuses');
+        $response = $this->get("funnels/{$funnelId}/statuses");
 
         return new ApiResourceCollection($response, Status::class);
     }
 
-    public function createStatus(array $data): Status
+    public function createStatus(int $funnelId, array $data): Status
     {
-        $response = $this->post('statuses', $data);
+        $response = $this->post("funnels/{$funnelId}/statuses", $data);
 
         return new Status($response);
     }
 
-    public function status(int $id): Status
+    public function status(int $funnelId, int $statusId): Status
     {
-        $response = $this->get("statuses/{$id}");
+        $response = $this->get("funnels/{$funnelId}/statuses/{$statusId}");
 
         return new Status($response);
     }
 
-    public function updateStatus(int $id, array $data): Status
+    public function updateStatus(int $funnelId, int $statusId, array $data): Status
     {
-        $response = $this->put("statuses/{$id}", $data);
+        $response = $this->put("funnels/{$funnelId}/statuses/{$statusId}", $data);
 
         return new Status($response);
     }
 
-    public function updateStatusPriority(int $id, array $data): Status
+    public function updateStatusPriority(int $funnelId, int $statusId, array $data): Status
     {
-        $response = $this->patch("statuses/{$id}/priority", $data);
+        $response = $this->patch("funnels/{$funnelId}/statuses/{$statusId}/priority", $data);
 
         return new Status($response);
     }
 
-    public function deleteStatus(int $id)
+    public function deleteStatus(int $funnelId, int $statusId)
     {
-        $this->delete("statuses/{$id}");
+        $this->delete("funnels/{$funnelId}/statuses/{$statusId}");
     }
 }
