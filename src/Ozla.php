@@ -40,8 +40,7 @@ class Ozla
         $this->apiKey = $apiKey;
 
         $this->client = $client ?: new Client([
-            // 'base_uri' => 'https://' . $this->domain . '.ozla.ru/api/v1/',
-            'base_uri' => 'http://' . $this->domain . '.ozla.test/api/v1/',
+            'base_uri' => 'https://' . $this->domain . '.ozla.ru/api/v1/',
             'http_errors' => false,
             'headers' => [
                 'Authorization' => 'Bearer ' . $this->apiKey,
