@@ -10,6 +10,7 @@ class Ozla
         Actions\ManagesUsers,
         Actions\ManagesCompanies,
         Actions\ManagesContragents,
+        Actions\ManagesFunnels,
         Actions\ManagesStatusColors,
         Actions\ManagesStatusTypes,
         Actions\ManagesStatuses,

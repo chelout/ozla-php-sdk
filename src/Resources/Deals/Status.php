@@ -14,6 +14,13 @@ class Status extends ApiResource
     public $name;
 
     /**
+     * Status funnel id.
+     *
+     * @var int
+     */
+    public $funnel_id;
+
+    /**
      * Status type id.
      *
      * @var int
