@@ -5,7 +5,7 @@ namespace Chelout\PhpSdk\Resources;
 class Phone extends ApiResource
 {
     /**
-     * Phone
+     * Phone.
      *
      * @var string
      */
