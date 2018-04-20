@@ -2,8 +2,8 @@
 
 namespace Chelout\PhpSdk\Actions;
 
-use Chelout\PhpSdk\Resources\Funnel;
 use Chelout\PhpSdk\Resources\ApiResourceCollection;
+use Chelout\PhpSdk\Resources\Funnel;
 
 trait ManagesFunnels
 {

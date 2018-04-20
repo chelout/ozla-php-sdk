@@ -2,8 +2,8 @@
 
 namespace Chelout\PhpSdk\Actions;
 
-use Chelout\PhpSdk\Resources\Deals\Status;
 use Chelout\PhpSdk\Resources\ApiResourceCollection;
+use Chelout\PhpSdk\Resources\Deals\Status;
 
 trait ManagesStatuses
 {

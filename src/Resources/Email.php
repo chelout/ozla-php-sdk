@@ -5,7 +5,7 @@ namespace Chelout\PhpSdk\Resources;
 class Email extends ApiResource
 {
     /**
-     * E-mail
+     * E-mail.
      *
      * @var string
      */
